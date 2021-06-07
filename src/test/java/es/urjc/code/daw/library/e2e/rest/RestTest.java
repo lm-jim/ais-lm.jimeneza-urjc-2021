@@ -24,15 +24,12 @@ public class RestTest {
     @LocalServerPort
     int port;
 
-    private String host;
     @BeforeEach
     public void setUp() {
         RestAssured.port = port;
-	/*this.host = "";
 	if(System.getProperty("host", "localhost") != "localhost"){
-		this.host = "https://"+System.getProperty("host", "localhost")+".herokuapp.com/";
+		RestAssured.baseURI = "https://"+System.getProperty("host", "localhost")+".herokuapp.com/";
 	}
-	    System.out.println("el host es: " + this.host);*/
     }
 
     @Autowired
