@@ -13,12 +13,12 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
-    - name: Execute unitary tests
-      run: mvn -B '-Dtest=es.urjc.code.daw.library.unitary.*Test' test
-    - name: Execute APIREST tests
-      run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.rest.*Test' test
-    - name: Execute Selenium tests
-      run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.selenium.*Test' test
+    #- name: Execute unitary tests
+    #  run: mvn -B '-Dtest=es.urjc.code.daw.library.unitary.*Test' test
+    #- name: Execute APIREST tests
+    #  run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.rest.*Test' test
+    #- name: Execute Selenium tests
+    #  run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.selenium.*Test' test
     - name: Build native with Maven
       run: mvn -B package -DskipTests
     - name: Upload jar for next job
@@ -91,7 +91,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
-      - name: Execute APIREST tests on Heroku
-        run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.rest.*Test' -Dhost=$HEROKU_APP test
+      #- name: Execute APIREST tests on Heroku
+      #  run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.rest.*Test' -Dhost=$HEROKU_APP test
       - name: Execute Selenium tests on Heroku
         run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.selenium.*Test' -Dhost=$HEROKU_APP test
