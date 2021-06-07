@@ -23,5 +23,5 @@ jobs:
     #- name: Deploy Docker image
     - name: Execute APIREST tests on Heroku
       run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.rest.*Test' -Dhost=$HEROKU_APP test
-    - name: Execute Selenium tests on Heroku
-      run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.selenium.*Test' -Dhost=$HEROKU_APP test
+    #- name: Execute Selenium tests on Heroku
+    #  run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.selenium.*Test' -Dhost=$HEROKU_APP test
