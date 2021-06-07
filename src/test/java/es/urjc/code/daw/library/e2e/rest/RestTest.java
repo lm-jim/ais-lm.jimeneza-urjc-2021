@@ -30,7 +30,7 @@ public class RestTest {
         RestAssured.port = port;
 	this.host = "";
 	if(System.getProperty("host", "localhost") != "localhost"){
-		this.host = System.getProperty("host", "localhost");
+		this.host = "https://"+System.getProperty("host", "localhost")+".herokuapp.com/";
 	}
     }
 
