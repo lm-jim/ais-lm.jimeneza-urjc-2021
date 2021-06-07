@@ -56,7 +56,7 @@ public class SeleniumTest {
 	public void createBookTest() throws Exception {
 
         // GIVEN: Partiendo de que estamos en la página principal de la libreria
-        this.driver.get("https://"+host+":"+this.port+"/");
+        this.driver.get("https://ais-lmjimeneza-2021.herokuapp.com/");
 
         // WHEN: Creamos un nuevo libro
 
@@ -76,7 +76,8 @@ public class SeleniumTest {
 	public void deleteBookTest() throws Exception {
 
         // GIVEN: Partiendo de que estamos en la página principal de la libreria
-        this.driver.get("https://"+host+":"+this.port+"/");
+	System.out.println("host name: "+ host);
+        this.driver.get("https://ais-lmjimeneza-2021.herokuapp.com/");
 
         // WHEN: 
         
