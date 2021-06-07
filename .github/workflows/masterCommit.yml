@@ -20,9 +20,9 @@ jobs:
     #- name: Execute Selenium tests
     #  run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.selenium.*Test' test
     #- name: Deploy Docker image
-    #- name: Build native with Maven
-    #  run: mvn -B package -DskipTests
-    #- name: Upload jar for next job
+    - name: Build native with Maven
+      run: mvn -B package -DskipTests
+    - name: Upload jar for next job
       uses: actions/upload-artifact@v2
       with:
         name: target
@@ -51,7 +51,7 @@ jobs:
   publish_in_heroku_registry:
     name: Publish in Heroku Registry
     runs-on: ubuntu-latest
-    needs: build
+    needs: publish_in_dockerhub
     env:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       HEROKU_APP: ${{ secrets.HEROKU_APP }}
