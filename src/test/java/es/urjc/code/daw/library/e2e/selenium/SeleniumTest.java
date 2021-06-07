@@ -41,7 +41,7 @@ public class SeleniumTest {
 		options.addArguments("--headless");
         	this.driver = new ChromeDriver(options);
         	this.wait = new WebDriverWait(driver, 10);
-		this.host = System.getProperty("host", "localhost");
+		this.host = System.getProperty("host", "localhost")+".herokuapp.com/";
 	}
 
 	@AfterEach
@@ -56,7 +56,7 @@ public class SeleniumTest {
 	public void createBookTest() throws Exception {
 
         // GIVEN: Partiendo de que estamos en la página principal de la libreria
-        this.driver.get("https://"+host+".herokuapp.com/");
+        this.driver.get(host+":"+this.port);
 
         // WHEN: Creamos un nuevo libro
 
@@ -76,7 +76,7 @@ public class SeleniumTest {
 	public void deleteBookTest() throws Exception {
 
         // GIVEN: Partiendo de que estamos en la página principal de la libreria
-        this.driver.get("https://"+host+".herokuapp.com/");
+        this.driver.get(host+":"+this.port);
 
         // WHEN: 
         
