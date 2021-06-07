@@ -21,4 +21,4 @@ jobs:
     #- name: Execute APIREST tests on Heroku
     #  run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.rest.*Test' -Dhost=$HEROKU_APP.herokuapp.com test
     - name: Execute Selenium tests on Heroku
-      run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.selenium.*Test' -Dhost='$HEROKU_APP.herokuapp.com' test
+      run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.selenium.*Test' -Dhost=$HEROKU_APP'.herokuapp.com' test
