@@ -34,7 +34,7 @@ public class RestTest {
 	if(System.getProperty("host", "localhost") != "localhost"){
 		RestAssured.baseURI = "https://"+System.getProperty("host", "localhost")+".herokuapp.com/";
 		System.out.println("Puerto remoto: " +remotePort);
-		RestAssured.port = remorePort;
+		RestAssured.port = remotePort;
 	}
     }
 
