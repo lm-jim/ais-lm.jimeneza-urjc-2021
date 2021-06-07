@@ -29,9 +29,7 @@ public class RestTest {
         RestAssured.port = port;
 	if(System.getProperty("host", "localhost") != "localhost")
 	{
-		System.out.println("https://"+System.getProperty("host", "localhost")+".herokuapp.com/");
-		RestAssured.baseUri = "https://"+System.getProperty("host", "localhost")+".herokuapp.com/";
-		
+		RestAssured.baseURI = "https://ais-lmjimeneza-2021.herokuapp.com/";
 	}
 	
     }
