@@ -56,7 +56,7 @@ public class SeleniumTest {
 	public void createBookTest() throws Exception {
 
         // GIVEN: Partiendo de que estamos en la página principal de la libreria
-        this.driver.get(host+":"+this.port+"/");
+        this.driver.get("https://"+host+":"+this.port+"/");
 
         // WHEN: Creamos un nuevo libro
 
@@ -76,7 +76,7 @@ public class SeleniumTest {
 	public void deleteBookTest() throws Exception {
 
         // GIVEN: Partiendo de que estamos en la página principal de la libreria
-        this.driver.get(host+":"+this.port+"/");
+        this.driver.get("https://"+host+":"+this.port+"/");
 
         // WHEN: 
         
