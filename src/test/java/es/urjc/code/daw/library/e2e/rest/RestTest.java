@@ -23,12 +23,17 @@ public class RestTest {
 
     @LocalServerPort
     int port;
-
+	
+    @Value("${server.port}")
+    private int remotePort;
+    
     @BeforeEach
     public void setUp() {
         RestAssured.port = port;
 	if(System.getProperty("host", "localhost") != "localhost"){
 		RestAssured.baseURI = "https://"+System.getProperty("host", "localhost")+".herokuapp.com/";
+		System.out.println("Puerto remoto: " +remotePort);
+		RestAssured.port = remorePort;
 	}
     }
 
@@ -49,7 +54,7 @@ public class RestTest {
                     .body(objectMapper.writeValueAsString(book))
                     .contentType(ContentType.JSON).
             when()
-                .post("https://ais-lmjimeneza-2021.herokuapp.com/api/books/").
+                .post("/api/books/").
             then()
                 .assertThat()
                 .statusCode(201)
@@ -59,7 +64,7 @@ public class RestTest {
         // COMPROBAMOS QUE EL LIBRO SE HA CREADO CORRECTAMENTE
 
         when()
-            .get("https://ais-lmjimeneza-2021.herokuapp.com/api/books/{id}", createdBook.getId())
+            .get("/api/books/{id}", createdBook.getId())
         .then()
              .assertThat()
              .statusCode(200)
