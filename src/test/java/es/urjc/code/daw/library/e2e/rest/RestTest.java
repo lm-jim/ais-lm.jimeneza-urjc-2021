@@ -24,17 +24,13 @@ public class RestTest {
 
     @LocalServerPort
     int port;
-	
-    @Value("${server.port}")
-    private int remotePort;
     
     @BeforeEach
     public void setUp() {
         RestAssured.port = port;
 	if(System.getProperty("host", "localhost") != "localhost"){
 		RestAssured.baseURI = "https://"+System.getProperty("host", "localhost")+".herokuapp.com/";
-		System.out.println("Puerto remoto: " +remotePort);
-		RestAssured.port = remotePort;
+		RestAssured.port = 443;
 	}
     }
 
