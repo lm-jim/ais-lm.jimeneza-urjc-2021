@@ -5,6 +5,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      HEROKU_APP: ${{ secrets.HEROKU_APP }}
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
