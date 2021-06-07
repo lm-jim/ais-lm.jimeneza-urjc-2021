@@ -1,8 +1,7 @@
 name: FeaturePullRequest
 
 on:
-  pull_request_target:
-    branches: feature/*
+  pull_request:
     
   workflow_dispatch:
   
