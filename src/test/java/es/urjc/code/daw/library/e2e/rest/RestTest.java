@@ -28,7 +28,10 @@ public class RestTest {
     @BeforeEach
     public void setUp() {
         RestAssured.port = port;
-	host = System.getProperty("host", "localhost");
+	this.host = "";
+	if(System.getProperty("host", "localhost") != "localhost"){
+		this.host = System.getProperty("host", "localhost");
+	}
     }
 
     @Autowired
@@ -48,7 +51,7 @@ public class RestTest {
                     .body(objectMapper.writeValueAsString(book))
                     .contentType(ContentType.JSON).
             when()
-                .post("/api/books/").
+                .post(this.host+"/api/books/").
             then()
                 .assertThat()
                 .statusCode(201)
@@ -58,7 +61,7 @@ public class RestTest {
         // COMPROBAMOS QUE EL LIBRO SE HA CREADO CORRECTAMENTE
 
         when()
-            .get("/api/books/{id}", createdBook.getId())
+            .get(this.host+"/api/books/{id}", createdBook.getId())
         .then()
              .assertThat()
              .statusCode(200)
@@ -81,7 +84,7 @@ public class RestTest {
                     .body(objectMapper.writeValueAsString(book))
                     .contentType(ContentType.JSON)
             .when()
-                .post("/api/books/")
+                .post(this.host+"/api/books/")
             .then()
                 .assertThat()
                 .statusCode(201)
@@ -90,7 +93,7 @@ public class RestTest {
         
         // BORRAMOS EL LIBRO CREADO
         when()
-             .delete("/api/books/{id}",createdBook.getId())
+             .delete(this.host+"/api/books/{id}",createdBook.getId())
         .then()
              .assertThat()
                 .statusCode(200);
@@ -98,7 +101,7 @@ public class RestTest {
         // COMPROBAMOS QUE EL LIBRO YA NO EXISTE
 
         when()
-             .get("/api/books/{id}", createdBook.getId())
+             .get(this.host+"/api/books/{id}", createdBook.getId())
         .then()
              .assertThat()
                 .statusCode(404);
