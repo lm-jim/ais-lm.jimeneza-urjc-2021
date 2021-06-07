@@ -3,7 +3,7 @@ name: MasterCommit
 on:
   push:
     branches: master
-
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -32,7 +32,7 @@ jobs:
   publish_in_heroku_registry:
     name: Publish in Heroku Registry
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: build
     env:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       HEROKU_APP: ${{ secrets.HEROKU_APP }}
@@ -57,7 +57,7 @@ jobs:
   deploy_to_heroku:
     name: Deploy to Heroku
     runs-on: ubuntu-latest
-    needs: [publish_in_heroku_registry]
+    needs: publish_in_heroku_registry
     env:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       HEROKU_APP: ${{ secrets.HEROKU_APP }}
