@@ -9,26 +9,26 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v1
-      with:
-        java-version: 11
-    #- name: Execute unitary tests
-    #  run: mvn -B '-Dtest=es.urjc.code.daw.library.unitary.*Test' test
-    #- name: Execute APIREST tests
-    #  run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.rest.*Test' test
-    #- name: Execute Selenium tests
-    #  run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.selenium.*Test' test
-    #- name: Deploy Docker image
-    - name: Build native with Maven
-      run: mvn -B package -DskipTests
-    - name: Upload jar for next job
-      uses: actions/upload-artifact@v2
-      with:
-        name: target
-        path: target
-        retention-days: 1
+      - uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Execute unitary tests
+        run: mvn -B '-Dtest=es.urjc.code.daw.library.unitary.*Test' test
+      - name: Execute APIREST tests
+        run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.rest.*Test' test
+      - name: Execute Selenium tests
+        run: mvn -B '-Dtest=es.urjc.code.daw.library.e2e.selenium.*Test' test
+      - name: Deploy Docker image
+      - name: Build native with Maven
+        run: mvn -B package -DskipTests
+      - name: Upload jar for next job
+        uses: actions/upload-artifact@v2
+        with:
+          name: target
+          path: target
+          retention-days: 1
   publish_in_dockerhub:
     name: Publish in DockerHub
     runs-on: ubuntu-latest
