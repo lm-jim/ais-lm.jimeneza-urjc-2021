@@ -43,7 +43,7 @@ public class SeleniumTest {
         	this.wait = new WebDriverWait(driver, 10);
 		this.host = System.getProperty("host", "localhost");
 		if(this.host != "localhost"){
-			this.host = this.host + ".herokuapp.com/";
+			this.host = this.host + ".herokuapp.com";
 		}
 		System.out.println(this.host);
 	}
@@ -60,7 +60,7 @@ public class SeleniumTest {
 	public void createBookTest() throws Exception {
 
         // GIVEN: Partiendo de que estamos en la página principal de la libreria
-        this.driver.get(this.host+":"+this.port);
+        this.driver.get("http://"+this.host+":"+this.port+"/");
 
         // WHEN: Creamos un nuevo libro
 
@@ -80,7 +80,7 @@ public class SeleniumTest {
 	public void deleteBookTest() throws Exception {
 
         // GIVEN: Partiendo de que estamos en la página principal de la libreria
-        this.driver.get(this.host+":"+this.port);
+        this.driver.get("http://"+this.host+":"+this.port+"/");
 
         // WHEN: 
         
