@@ -28,11 +28,11 @@ public class RestTest {
     @BeforeEach
     public void setUp() {
         RestAssured.port = port;
-	this.host = "";
+	/*this.host = "";
 	if(System.getProperty("host", "localhost") != "localhost"){
 		this.host = "https://"+System.getProperty("host", "localhost")+".herokuapp.com/";
 	}
-	    System.out.println("el host es: " + this.host);
+	    System.out.println("el host es: " + this.host);*/
     }
 
     @Autowired
@@ -52,7 +52,7 @@ public class RestTest {
                     .body(objectMapper.writeValueAsString(book))
                     .contentType(ContentType.JSON).
             when()
-                .post(this.host+"/api/books/").
+                .post("https://ais-lmjimeneza-2021.herokuapp.com/api/books/").
             then()
                 .assertThat()
                 .statusCode(201)
@@ -62,7 +62,7 @@ public class RestTest {
         // COMPROBAMOS QUE EL LIBRO SE HA CREADO CORRECTAMENTE
 
         when()
-            .get(this.host+"/api/books/{id}", createdBook.getId())
+            .get("https://ais-lmjimeneza-2021.herokuapp.com/api/books/{id}", createdBook.getId())
         .then()
              .assertThat()
              .statusCode(200)
@@ -85,7 +85,7 @@ public class RestTest {
                     .body(objectMapper.writeValueAsString(book))
                     .contentType(ContentType.JSON)
             .when()
-                .post(this.host+"/api/books/")
+                .post("/api/books/")
             .then()
                 .assertThat()
                 .statusCode(201)
@@ -94,7 +94,7 @@ public class RestTest {
         
         // BORRAMOS EL LIBRO CREADO
         when()
-             .delete(this.host+"/api/books/{id}",createdBook.getId())
+             .delete("/api/books/{id}",createdBook.getId())
         .then()
              .assertThat()
                 .statusCode(200);
@@ -102,7 +102,7 @@ public class RestTest {
         // COMPROBAMOS QUE EL LIBRO YA NO EXISTE
 
         when()
-             .get(this.host+"/api/books/{id}", createdBook.getId())
+             .get("/api/books/{id}", createdBook.getId())
         .then()
              .assertThat()
                 .statusCode(404);
