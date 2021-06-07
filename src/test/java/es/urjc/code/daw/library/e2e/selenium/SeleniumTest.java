@@ -45,6 +45,7 @@ public class SeleniumTest {
 		if(this.host != "localhost"){
 			this.host = this.host + ".herokuapp.com/";
 		}
+		System.out.println(this.host);
 	}
 
 	@AfterEach
@@ -59,7 +60,7 @@ public class SeleniumTest {
 	public void createBookTest() throws Exception {
 
         // GIVEN: Partiendo de que estamos en la página principal de la libreria
-        this.driver.get(host+":"+this.port);
+        this.driver.get(this.host+":"+this.port);
 
         // WHEN: Creamos un nuevo libro
 
@@ -79,7 +80,7 @@ public class SeleniumTest {
 	public void deleteBookTest() throws Exception {
 
         // GIVEN: Partiendo de que estamos en la página principal de la libreria
-        this.driver.get(host+":"+this.port);
+        this.driver.get(this.host+":"+this.port);
 
         // WHEN: 
         
