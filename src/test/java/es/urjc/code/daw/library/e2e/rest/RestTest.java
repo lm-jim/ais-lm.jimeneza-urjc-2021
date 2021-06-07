@@ -16,6 +16,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import es.urjc.code.daw.library.book.Book;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import org.springframework.beans.factory.annotation.Value;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DisplayName("REST tests")
