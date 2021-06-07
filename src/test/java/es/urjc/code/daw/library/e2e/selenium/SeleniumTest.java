@@ -76,7 +76,6 @@ public class SeleniumTest {
 	public void deleteBookTest() throws Exception {
 
         // GIVEN: Partiendo de que estamos en la página principal de la libreria
-	System.out.println("host name: "+ host);
         this.driver.get("https://"+host+".herokuapp.com/");
 
         // WHEN: 
