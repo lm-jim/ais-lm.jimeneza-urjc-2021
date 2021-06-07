@@ -32,6 +32,7 @@ public class RestTest {
 	if(System.getProperty("host", "localhost") != "localhost"){
 		this.host = "https://"+System.getProperty("host", "localhost")+".herokuapp.com/";
 	}
+	    System.out.println("el host es: " + this.host);
     }
 
     @Autowired
