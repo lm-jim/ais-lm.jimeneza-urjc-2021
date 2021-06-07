@@ -3,8 +3,6 @@ name: FeaturePullRequest
 on:
   pull_request:
     branches: feature/*
-    types:
-      - opened
   workflow_dispatch:
   
 jobs:
