@@ -2,7 +2,7 @@ name: FeaturePullRequest
 
 on:
   pull_request:
-    branches: feature/*
+    branches: feature
     
   workflow_dispatch:
   
