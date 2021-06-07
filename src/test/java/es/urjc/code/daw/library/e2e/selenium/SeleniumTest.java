@@ -41,7 +41,10 @@ public class SeleniumTest {
 		options.addArguments("--headless");
         	this.driver = new ChromeDriver(options);
         	this.wait = new WebDriverWait(driver, 10);
-		this.host = System.getProperty("host", "localhost")+".herokuapp.com/";
+		this.host = System.getProperty("host", "localhost");
+		if(this.host != "localhost"){
+			this.host = this.host + ".herokuapp.com/";
+		}
 	}
 
 	@AfterEach
