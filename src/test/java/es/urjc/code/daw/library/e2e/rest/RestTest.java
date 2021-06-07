@@ -27,7 +27,13 @@ public class RestTest {
     @BeforeEach
     public void setUp() {
         RestAssured.port = port;
-	RestAssured.baseUri = "https://"+System.getProperty("host", "localhost")+".herokuapp.com/";
+	if(System.getProperty("host", "localhost") != "localhost")
+	{
+		System.out.println("https://"+System.getProperty("host", "localhost")+".herokuapp.com/");
+		RestAssured.baseUri = "https://"+System.getProperty("host", "localhost")+".herokuapp.com/";
+		
+	}
+	
     }
 
     @Autowired
