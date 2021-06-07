@@ -27,7 +27,6 @@ public class RestTest {
     @BeforeEach
     public void setUp() {
         RestAssured.port = port;
-	RestAssured.baseURI = "https://ais-lmjimeneza-2021.herokuapp.com";
 	
     }
 
